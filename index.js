@@ -2,18 +2,28 @@
 const express = require('express')
 const app = express()
 const bcrypt = require('bcrypt')
+const path = require('path')
+const exphbs = require('express-handlebars')
 
 let {users, schedules} = require('./data')
 
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
+app.use(express.static('public'))
+app.set('public', path.join(__dirname, 'public'))
+
+app.set('view engine', 'hbs')
+app.engine('hbs', exphbs({
+    defaultLayout: 'main',
+    extname: '.hbs'
+}))
 
 app.get('/', (req, res) => {
-    res.send("Welcome to our schedule website")
+    res.render('home')
 })
 
 app.get('/users', (req, res) => {
-    res.send(users)
+    res.render('users', {users})
 })
 
 app.post('/users', (req, res) => {
@@ -44,7 +54,7 @@ app.get('/users/:id/schedules', (req, res) => {
 })
 
 app.get('/schedules', (req, res) => {
-    res.send(schedules)
+    res.render('schedules', {schedules})
 })
 
 app.post('/schedules', (req, res) => {

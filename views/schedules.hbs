@@ -1,0 +1,12 @@
+<h2>Schedules</h2>
+
+{{#each schedules}}
+<div class="display-card">
+    <div class="display-text">
+        <h3>User ID: {{this.user_id}}</h3>
+        <h4>Day: {{this.day}}</h4>
+        <p>Start: {{this.start_at}}</p>
+        <p>End: {{this.end_at}}</p>
+    </div>
+</div>
+{{/each}}

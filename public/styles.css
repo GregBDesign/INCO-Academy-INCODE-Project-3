@@ -1,0 +1,102 @@
+/* Global styles */
+:root {
+    --primary-bg-color: #F5F5F5;
+    --secondary-bg-color: #6A7B8B;
+    --secondary-bg-2-color: #5C5B5B; 
+    --secondary-text-color: #F1F3F5;
+}
+
+*, *:after, *:before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--primary-bg-color);
+    font-family: 'Rubik', Helvetica, Arial, sans-serif;
+}
+
+h1, h2, h3, h4 {
+    font-weight: 400;
+}
+
+/* Header styles */
+header {
+    background-color: var(--secondary-bg-color);
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5vw;
+}
+
+header {
+    color: var(--primary-bg-color);
+    font-weight: 400;
+}
+
+header img {
+    height: 7vh;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+nav a {
+    margin: 1%;
+    color: var(--primary-bg-color);
+    text-decoration: none;
+    font-size: 1.25rem;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Body container */
+h1 {
+    text-align: center;
+    color: var(--secondary-bg-2-color);
+    margin-top: 5%;
+    font-weight: 600;
+}
+
+.main-body {
+    width: 80%;
+    text-align: center;
+    margin: 5vh auto;
+    color: var(--secondary-bg-color)
+}
+
+.img-holder {
+    width: 80%;
+    height: 40vh;
+    margin: 5% auto;
+}
+
+.img-holder img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* Info display cards  */
+.display-card {
+    margin: 5% auto;
+    padding: 2%;
+    width: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--secondary-bg-color);
+    color: var(--secondary-text-color)
+}
+
+.display-text {
+    width: 50%;
+    text-align: left;
+}
