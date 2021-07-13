@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-let sha256 = require('js-sha256')
+const bcrypt = require('bcrypt')
 
 let {users, schedules} = require('./data')
 
@@ -17,10 +17,13 @@ app.get('/users', (req, res) => {
 
 app.post('/users', (req, res) => {
     const {firstname, lastname, email, password} = req.body
+    const saltRounds = 10
+    const salt = bcrypt.genSaltSync(saltRounds)
+    const hash = bcrypt.hashSync(password, salt)
     let newUser = {"firstname": firstname, 
                 "lastname": lastname,
                 "email": email,
-                "password": sha256(password)}
+                "password": hash}
     users.push(newUser)
     res.send(newUser)
 })
