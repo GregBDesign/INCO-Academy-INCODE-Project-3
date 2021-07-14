@@ -1,0 +1,39 @@
+<h2>Create a new schedule</h2>
+
+<div class="display-card">
+    <form action="/schedules" method="POST">
+        <div class="display-form">
+            <label for="user">User:</label>
+                <select name="user" id="user">
+                    {{#each users}}
+                        <option value={{this.user_id}}>{{this.firstname}} {{this.lastname}}</option>
+                    {{/each}}
+                </select>
+        </div>
+        <div class="display-form"> 
+            <label for="day">Day</label>
+                <select name="day" id="day">
+                    <option value="1">Monday</option>
+                    <option value="2">Tuesday</option>
+                    <option value="3">Wednesday</option>
+                    <option value="4">Thursday</option>
+                    <option value="5">Friday</option>
+                    <option value="6">Saturday</option>
+                    <option value="7">Sunday</option>
+                </select>
+        </div>
+        <div class="display-form">
+            <label for="start">Start At:</label>
+            <input type="text" name="start" id="start" required>
+        </div>
+        <div class="display-form">
+            <label for="end">End At:</label>
+            <input type="text" name="end" id="end" required>
+        </div>
+        <div class="display-form">
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+</div>
+
+<a class="main-link" href="/schedules">Back to schedules</a>

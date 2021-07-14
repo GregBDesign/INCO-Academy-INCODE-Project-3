@@ -26,22 +26,15 @@ app.get('/users', (req, res) => {
     res.render('users', {users})
 })
 
-app.post('/users', (req, res) => {
-    const {firstname, lastname, email, password} = req.body
-    const saltRounds = 10
-    const salt = bcrypt.genSaltSync(saltRounds)
-    const hash = bcrypt.hashSync(password, salt)
-    let newUser = {"firstname": firstname, 
-                "lastname": lastname,
-                "email": email,
-                "password": hash}
-    users.push(newUser)
-    res.send(newUser)
+app.get('/users/new', (req, res) => {
+    res.render('newuser')
 })
 
 app.get('/users/:id', (req, res) => {
     const {id} = req.params
-    res.send(users[id])
+    const user = users[id]
+    console.log(user)
+    res.render('user', {user})
 })
 
 app.get('/users/:id/schedules', (req, res) => {
@@ -50,21 +43,39 @@ app.get('/users/:id/schedules', (req, res) => {
     for(let i = 0; i < schedules.length; i++){
         schedules[i]["user_id"] == id ? schedArr.push(schedules[i]) : null
     }
-    res.send(schedArr)
+    res.render('schedule', {schedArr, id})
+})
+
+app.post('/users', (req, res) => {
+    const {first, last, email, password} = req.body
+    const saltRounds = 10
+    const salt = bcrypt.genSaltSync(saltRounds)
+    const hash = bcrypt.hashSync(password, salt)
+    let newUser = {"user_id": users.length,
+                "firstname": first, 
+                "lastname": last,
+                "email": email,
+                "password": hash}
+    users.push(newUser)
+    res.render('users', {users})
 })
 
 app.get('/schedules', (req, res) => {
     res.render('schedules', {schedules})
 })
 
+app.get('/schedules/new', (req, res) => {
+    res.render('newschedule' , {users})
+})
+
 app.post('/schedules', (req, res) => {
-    const {user_id, day, start_at, end_at} = req.body
-    let newSched = {"user_id": user_id,
+    const {user, day, start, end} = req.body
+    let newSched = {"user_id": user,
                 "day": day,
-                "start_at": start_at,
-                "end_at": end_at}
+                "start_at": start,
+                "end_at": end}
     schedules.push(newSched)
-    res.send(newSched)
+    res.render('schedules', {schedules})
 })
 
 app.listen(3000, () => {

@@ -1,0 +1,27 @@
+<h2>Create a new user</h2>
+
+<div class="display-card">
+    <form action="/users" method="POST">
+        <div class="display-form">
+            <label for="first">First Name:</label>
+            <input type="text" name="first" id="first" required>
+        </div>
+        <div class="display-form">
+            <label for="last">Last Name:</label>
+            <input type="text" name="last" id="last" required>
+        </div>
+        <div class="display-form">
+            <label for="email">E-Mail:</label>
+            <input type="email" name="email" id="email" required>
+        </div>
+        <div class="display-form">
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required>
+        </div>
+        <div class="display-form">
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+</div>
+
+<a class="main-link" href="/users">Back to users</a>

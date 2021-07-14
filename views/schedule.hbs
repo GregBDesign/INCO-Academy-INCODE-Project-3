@@ -1,0 +1,13 @@
+<h2>Schedule for user {{id}}</h2>
+
+{{#each schedArr}} 
+<div class="display-card">
+    <div class="display-text">
+        <h3>Day: {{this.day}}</h3>
+        <h4>Start: {{this.start_at}}</h4>
+        <h4>End: {{this.end_at}}</h4>
+    </div>
+</div>
+{{/each}}
+
+<a class="main-link" href="/schedules">Back to schedules</a>
