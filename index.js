@@ -1,4 +1,4 @@
-//Project 3B
+//Project 3C
 const express = require('express')
 const app = express()
 const bcrypt = require('bcrypt')
