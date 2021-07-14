@@ -33,7 +33,6 @@ app.get('/users/new', (req, res) => {
 app.get('/users/:id', (req, res) => {
     const {id} = req.params
     const user = users[id]
-    console.log(user)
     res.render('user', {user})
 })
 
