@@ -1,11 +1,11 @@
 <h2>Users</h2>
 
-{{#each users}}
+{{#each userSearch}}
 <div class="display-card">
     <div class="display-text">
-        <h3>First Name: {{{this.firstname}}}</h3>
-        <h3>Last Name: {{{this.lastname}}}</h3>
-        <h4>Last Name: {{{this.email}}}</h4>
+        <h3>First Name: {{{this.first_name}}}</h3>
+        <h3>Last Name: {{{this.last_name}}}</h3>
+        <h4>Email: {{{this.email}}}</h4>
     </div>
 </div>
 {{/each}}

@@ -1,6 +1,7 @@
 //Project 3C
 const express = require('express')
 const app = express()
+const db = require('./conn/conn')
 const bcrypt = require('bcrypt')
 const path = require('path')
 const exphbs = require('express-handlebars')
@@ -22,8 +23,13 @@ app.get('/', (req, res) => {
     res.render('home')
 })
 
-app.get('/users', (req, res) => {
-    res.render('users', {users})
+app.get('/users', async (req, res) => {
+    try {
+        const userSearch = await db.any("SELECT * FROM users");
+        res.render('users', {userSearch})
+    } catch (e) {
+        console.log(e)
+    }
 })
 
 app.get('/users/new', (req, res) => {
@@ -59,8 +65,13 @@ app.post('/users', (req, res) => {
     res.render('users', {users})
 })
 
-app.get('/schedules', (req, res) => {
-    res.render('schedules', {schedules})
+app.get('/schedules', async (req, res) => {
+    try {
+        const schedSearch = await db.any("SELECT * FROM schedules");
+        res.render('schedules', {schedSearch})
+    } catch (e) {
+        console.log(e)
+    }
 })
 
 app.get('/schedules/new', (req, res) => {
@@ -80,3 +91,5 @@ app.post('/schedules', (req, res) => {
 app.listen(3000, () => {
     console.log("Project 3 on port 3000")
 })
+
+//To do: add validations w/ DB results
