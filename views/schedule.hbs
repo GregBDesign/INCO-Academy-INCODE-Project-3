@@ -1,11 +1,11 @@
-<h2>Schedule for user {{id}}</h2>
+<h2>Schedules for user: {{id}} {{dbMsg.error}}</h2>
 
-{{#each schedArr}} 
+{{#each sched}} 
 <div class="display-card">
     <div class="display-text">
         <h3>Day: {{this.day}}</h3>
-        <h4>Start: {{this.start_at}}</h4>
-        <h4>End: {{this.end_at}}</h4>
+        <h4>Start: {{this.start_time}}</h4>
+        <h4>End: {{this.end_time}}</h4>
     </div>
 </div>
 {{/each}}

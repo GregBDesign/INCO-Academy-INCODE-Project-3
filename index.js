@@ -1,12 +1,13 @@
 //Project 3C
+require('dotenv').config()
 const express = require('express')
 const app = express()
 const db = require('./conn/conn')
-const bcrypt = require('bcrypt')
 const path = require('path')
 const exphbs = require('express-handlebars')
 
-let {users, schedules} = require('./data')
+const users = require('./routes/users')
+const schedules = require('./routes/schedules')
 
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
@@ -19,77 +20,13 @@ app.engine('hbs', exphbs({
     extname: '.hbs'
 }))
 
+app.use("/users", users)
+app.use("/schedules", schedules)
+
 app.get('/', (req, res) => {
     res.render('home')
-})
-
-app.get('/users', async (req, res) => {
-    try {
-        const userSearch = await db.any("SELECT * FROM users");
-        res.render('users', {userSearch})
-    } catch (e) {
-        console.log(e)
-    }
-})
-
-app.get('/users/new', (req, res) => {
-    res.render('newuser')
-})
-
-app.get('/users/:id', (req, res) => {
-    const {id} = req.params
-    const user = users[id]
-    res.render('user', {user})
-})
-
-app.get('/users/:id/schedules', (req, res) => {
-    const {id} = req.params
-    const schedArr = []
-    for(let i = 0; i < schedules.length; i++){
-        schedules[i]["user_id"] == id ? schedArr.push(schedules[i]) : null
-    }
-    res.render('schedule', {schedArr, id})
-})
-
-app.post('/users', (req, res) => {
-    const {first, last, email, password} = req.body
-    const saltRounds = 10
-    const salt = bcrypt.genSaltSync(saltRounds)
-    const hash = bcrypt.hashSync(password, salt)
-    let newUser = {"user_id": users.length,
-                "firstname": first, 
-                "lastname": last,
-                "email": email,
-                "password": hash}
-    users.push(newUser)
-    res.render('users', {users})
-})
-
-app.get('/schedules', async (req, res) => {
-    try {
-        const schedSearch = await db.any("SELECT * FROM schedules");
-        res.render('schedules', {schedSearch})
-    } catch (e) {
-        console.log(e)
-    }
-})
-
-app.get('/schedules/new', (req, res) => {
-    res.render('newschedule' , {users})
-})
-
-app.post('/schedules', (req, res) => {
-    const {user, day, start, end} = req.body
-    let newSched = {"user_id": user,
-                "day": day,
-                "start_at": start,
-                "end_at": end}
-    schedules.push(newSched)
-    res.render('schedules', {schedules})
 })
 
 app.listen(3000, () => {
     console.log("Project 3 on port 3000")
 })
-
-//To do: add validations w/ DB results
