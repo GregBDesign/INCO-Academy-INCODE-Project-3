@@ -6,6 +6,7 @@ router
     .route('/')
     .get(async (req, res) => {
         try {
+            // Using an INNER JOIN method to retrieve schedule information and also the users name. The users name is then passed to the schedule template
             const schedSearch = await db.any("SELECT *, users.first_name, users.last_name FROM schedules INNER JOIN users on schedules.user_id = users.user_id")
             res.render('schedules', {schedSearch})
         } catch (e) {
