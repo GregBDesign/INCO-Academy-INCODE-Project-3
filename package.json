@@ -12,6 +12,11 @@
   },
   "devDependencies": {},
   "scripts": {
+    "create-database": "psql -U postgres -f db/create-db.sql",
+    "create-users": "psql -U postgres -f db/create-users.sql",
+    "create-schedules": "psql -U postgres -f db/create-schedules.sql",
+    "seed-users": "psql -U postgres -f db/users.sql",
+    "seed-schedules": "psql -U postgres -f db/schedules.sql",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

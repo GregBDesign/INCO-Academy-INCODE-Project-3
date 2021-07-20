@@ -32,4 +32,9 @@ When setting up the project on your local system you will need to add a `.env` f
 - `DB_PASS = [PASSWORD]` 
 - `DB_NAME = [DATABASE NAME]`
 
-In the `/db_dump` directory there are copies of the `users` and `schedules` tables which can be imported into your local postgres db. 
+Please run (`npm run`) the following scripts in order to set up the database, tables and initial seed data:
+- `create-database`
+- `create-users`
+- `create-schedules`
+- `seed-users`
+- `seed-schedules`

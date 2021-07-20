@@ -21,7 +21,7 @@ router
         const saltRounds = 10
         const salt = bcrypt.genSaltSync(saltRounds)
         const hash = bcrypt.hashSync(password, salt)
-        db.none("INSERT INTO users (\"user_id\", \"first_name\", \"last_name\", \"email\", \"password\") VALUES (DEFAULT, $1, $2, $3, $4)", [first, last, email, hash])
+        db.none("INSERT INTO users (user_id, first_name, last_name, email, password) VALUES (DEFAULT, $1, $2, $3, $4)", [first, last, email, hash])
             .then( async () => {
                 // Once the information is submitted to the DB the below request retrieves all users from DB
                 const userSearch = await db.any("SELECT * FROM users");
