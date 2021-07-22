@@ -4,7 +4,10 @@ const db = require('../conn/conn')
 const bcrypt = require('bcrypt')
 
 // dbMsg is an error object to pass to specific schedules for individual users (line 61). This message is displayed if there are no results from DB
-const dbMsg = {error: "No values returned"}
+const dbMsg = {
+    error: "No values returned",
+    email: "A user with this information already exists"
+}
 
 router
     .route('/')
@@ -21,14 +24,28 @@ router
         const saltRounds = 10
         const salt = bcrypt.genSaltSync(saltRounds)
         const hash = bcrypt.hashSync(password, salt)
-        db.none("INSERT INTO users (user_id, first_name, last_name, email, password) VALUES (DEFAULT, $1, $2, $3, $4)", [first, last, email, hash])
-            .then( async () => {
-                // Once the information is submitted to the DB the below request retrieves all users from DB
-                const userSearch = await db.any("SELECT * FROM users");
-                res.render('users', {userSearch})
+        const emailLower = email.toLowerCase();
+        // Check if a user with this email address already exists
+        db.any("SELECT * FROM users WHERE email = $1", [emailLower])
+            .then(data => {
+                // If no user with this email address exists then insert the information into the DB
+                if(data.length == 0){
+                    db.none("INSERT INTO users (user_id, first_name, last_name, email, password) VALUES (DEFAULT, $1, $2, $3, $4)", [first, last, emailLower, hash])
+                        .then( async () => {
+                        // Once the information is submitted to the DB the below request retrieves all users from DB
+                            const userSearch = await db.any("SELECT * FROM users");
+                            res.render('users', {userSearch})
+                        })
+                        .catch((e) => {
+                            console.log(e)
+                        })
+                } else {
+                    res.render('userfail', {dbMsg})
+                }
             })
-            .catch((e) => {
+            .catch(e => {
                 console.log(e)
+                res.render('../views/home')
             })
     })
 
