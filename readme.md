@@ -12,9 +12,9 @@ The 'Mr. Coffee' was provided to us as part of the project assets. All other UI 
 NodeJS, Express, Handlebars, CSS, PostgreSQL
 
 #### Images:
-()[https://res.cloudinary.com/dbdcclhzw/image/upload/v1633071002/Projects/Coffee/coffee1_nxez1w.png]
-()[https://res.cloudinary.com/dbdcclhzw/image/upload/v1633070999/Projects/Coffee/coffee3_g1pf78.png]
-()[https://res.cloudinary.com/dbdcclhzw/image/upload/v1633070999/Projects/Coffee/coffee2_frbbba.png]
+![](https://res.cloudinary.com/dbdcclhzw/image/upload/v1633071002/Projects/Coffee/coffee1_nxez1w.png)
+![](https://res.cloudinary.com/dbdcclhzw/image/upload/v1633070999/Projects/Coffee/coffee3_g1pf78.png)
+![](https://res.cloudinary.com/dbdcclhzw/image/upload/v1633070999/Projects/Coffee/coffee2_frbbba.png)
 
 #### Local Installation instructions
 
