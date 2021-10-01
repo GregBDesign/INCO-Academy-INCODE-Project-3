@@ -1,23 +1,17 @@
-# INCO Academy - INCODE Project 3: Basic Web App
+# User Schedule Web Application - INCO Academy Full Stack Web Development Bootcamp Assignment
 
-## Author: Greg Baugh
+## About
 
-### About
+This project is a web application I built as part of my full stack web development bootcamp. The application allows staff at a fictional business to view their work schedules. Users can input new schedules and create new user records.  
 
-This project is a web app using Express and Node. As per the project requirements it is split into three sections.
+As per the project requirements, the application is built using NodeJS and Express on the backend and HTML and CSS on the front end. The project suggested to use EJS for the templating engine but as I already had experience using this I used the Handlebars templating engine. We were also required to use Postgres as the database for this project. I had used NoSQL databases before with Express so this project was a good opportunity to use SQL in an Express application. As I am familiar with connecting to a SQL database in PHP, this wasn't too difficult to do in Express/NodeJS.
 
-A new branch has been created for each section:
-- Branch: Main - 3A
-- Branch: 3b - 3b
-- Branch: 3c - 3C
+The 'Mr. Coffee' was provided to us as part of the project assets. All other UI elements, including font selection and colour choices, were designed and conceptualised by myself during the design process. 
 
-Technologies used:
-- NodeJS
-- Express
-- Handlebars (https://handlebarsjs.com/)
-- Postgres
+### Technologies used:
+NodeJS, Express, Handlebars, CSS, PostgreSQL
 
-### Installation instructions
+#### Local Installation instructions
 
 The following packages are required for this project and can be downloaded from NPM:
 - Express
