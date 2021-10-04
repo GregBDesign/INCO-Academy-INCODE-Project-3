@@ -30,6 +30,8 @@ app.get('/', (req, res) => {
     res.render('home')
 })
 
+const port = process.env.PORT || 3000
+
 app.listen(3000, () => {
     console.log("Project 3 on port 3000")
 })
