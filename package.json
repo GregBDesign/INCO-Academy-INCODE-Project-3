@@ -12,6 +12,7 @@
   },
   "devDependencies": {},
   "scripts": {
+    "start": "npm index.js",
     "create-database": "psql -U postgres -f db/create-db.sql",
     "create-users": "psql -U postgres -f db/create-users.sql",
     "create-schedules": "psql -U postgres -f db/create-schedules.sql",
