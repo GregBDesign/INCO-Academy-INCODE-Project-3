@@ -8,6 +8,8 @@ As per the project requirements, the application is built using NodeJS and Expre
 
 The 'Mr. Coffee' was provided to us as part of the project assets. All other UI elements, including font selection and colour choices, were designed and conceptualised by myself during the design process. 
 
+The live project can be viewed [here](https://mr-coffee-scheduling.herokuapp.com/)
+
 ### Technologies used:
 NodeJS, Express, Handlebars, CSS, PostgreSQL
 
