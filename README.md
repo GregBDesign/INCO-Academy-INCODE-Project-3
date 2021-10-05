@@ -10,6 +10,8 @@ The 'Mr. Coffee' was provided to us as part of the project assets. All other UI 
 
 The live project can be viewed [here](https://mr-coffee-scheduling.herokuapp.com/)
 
+N.B - As per the project requirements, we were required to split the development into three branches (Main, 3B and 3C). Branch [3C](https://github.com/GregBaughDev/INCO-Academy-INCODE-Project-3/tree/3c) contains the final project code.
+
 ### Technologies used:
 NodeJS, Express, Handlebars, CSS, PostgreSQL
 
